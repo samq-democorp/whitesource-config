@@ -50,8 +50,9 @@ jobs:
             echo $JARFILE will be added to appPath
             java -jar wss-unified-agent.jar -appPath $JARFILE -d ./
           else
-          echo $WARFILE will be added to appPath
-          java -jar wss-unified-agent.jar -appPath $WARFILE -d ./
+            echo $WARFILE will be added to appPath
+            java -jar wss-unified-agent.jar -appPath $WARFILE -d ./
+          fi
         fi
 
     - name: Check Project State
