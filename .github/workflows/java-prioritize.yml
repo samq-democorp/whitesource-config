@@ -38,13 +38,14 @@ jobs:
       run: |
         echo Downloading Mend Unified Agent
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
-        if [[ "$(curl -sL https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256)" != "$(sha256sum wss-unified-agent.jar)" ]] ; then
+        if [[ "$(curl -sL https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256)" != "$(sha256sum wss-unified-agent.jar)" ]]
+        then
           echo "Integrity Check Failed"
         else
           echo "Integrity Check Passed"
           echo Starting Unified Agent Scan
           WARFILE=$(find ./ -type f -wholename "*/target/*.war")
-          if [ -z "${WARFILE}" ]
+          if [ -z "$WARFILE" ]
           then
             JARFILE=$(find ./ -type f -wholename "*/target/*.jar")
             echo $JARFILE will be added to appPath
