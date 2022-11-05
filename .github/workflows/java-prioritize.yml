@@ -65,6 +65,12 @@ jobs:
         curl -LJO https://raw.githubusercontent.com/mend-toolkit/mend-examples/main/Scripts/check-project-state.sh
         chmod +x check-project-state.sh && ./check-project-state.sh
 
+    - name: Tag Project with repoFullName
+      run: |
+        export WS_PROJECTTOKEN=$(jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json)
+        curl -X POST "${WS_URL}/api/v1.3" -H "Content-Type: application/json" \
+        -d '{ "requestType":"saveProjectTag", "userKey":"'${WS_USERKEY}'", "projectToken":"'${WS_PROJECTTOKEN}'", "tagKey":"repoFullName", "tagValue":"'${{github.repository}}@${{github.ref_name}}'" }'
+
     - name: Mend Report Generation
       run: |
         export WS_PROJECTTOKEN=$(jq -r '.projects | .[] | .projectToken' ./whitesource/scanProjectDetails.json)
