@@ -6,8 +6,7 @@
     "enableLicenseViolations": "true"
   },
   "scanSettingsSAST": {
-    "enableScan": "true",
-    "scanPullRequests": true
+    "enableScan": "true"
     },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
