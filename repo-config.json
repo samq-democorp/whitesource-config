@@ -3,10 +3,11 @@
     "configMode": "AUTO",
     "configExternalURL": "",
     "baseBranches": [],
-    "enableLicenseViolations": "true"
+    "enableLicenseViolations": true
   },
   "scanSettingsSAST": {
-    "enableScan": "true"
+    "enableScan": true,
+    "enableRemediation": true
     },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
